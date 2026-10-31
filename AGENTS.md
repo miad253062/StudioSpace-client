@@ -8,18 +8,13 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## Project Context
-- **Project:** `studio-space-client` (Next.js 16.4.3)
-- **App structure:** App Router (`src/app/`)
-- **Styling:** Tailwind CSS (v4)
-- **Compiler:** Babel React Compiler (v1) enabled.
+## Development & Verification
+- **Dev server:** `npm run dev`
+- **Lint:** `npm run lint` (ESLint 9 flat config in `eslint.config.mjs`)
+- **Typecheck:** `npx tsc --noEmit` (no dedicated npm script)
+- **Build:** `npm run build`
 
-## Development Commands
-- `npm run dev` – Starts development server.
-- `npm run build` – Production build.
-- `npm run lint` – Runs ESLint.
-
-## Important Gotchas
-- **Tailwind v4:** Uses CSS-first configuration. Check `tailwind.config` files carefully as they may be deprecated or unnecessary in favor of standard CSS imports.
-- **Next.js 16:** Assume non-standard behaviors; check documentation inside `node_modules/next` if encountering unexpected runtime errors.
-
+## Architecture & Configuration
+- **App Structure:** Next.js 16 App Router in `src/app/`. Path alias `@/*` maps to `./src/*`.
+- **Tailwind CSS v4:** Standard CSS-first setup via `@import "tailwindcss";` in `src/app/globals.css`. Turbopack CSS loader configured in `next.config.ts`.
+- **React Compiler:** React 19 Compiler enabled (`reactCompiler: true` in `next.config.ts`).
