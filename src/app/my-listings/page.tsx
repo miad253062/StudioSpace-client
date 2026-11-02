@@ -28,6 +28,9 @@ function MyListing () {
         <div className="container mx-auto">
             <div className="my-10 p-4">
                 {
+                    listings.length === 0? <div>
+                        <h1 className="text-center text-2xl font-semibold text-[#262f40]">No Data Found!</h1>
+                    </div>:
                     listings.map(card => <MyListCard key={card} userlist={card}></MyListCard>)
                 }
             </div>

@@ -26,20 +26,19 @@ function MyListCard ({userlist}: UserListDataProps) {
     }
     return (
         <div>
-            
                 <div className="flex items-center justify-between border p-4 rounded-2xl border-gray-300">
                     <Link href={`/${userlist._id}`}>
                         <div className="flex items-center gap-4">
                             <Image src={userlist.imageURL} alt={userlist.name} width={50} height={50}/>
                             <div>
-                                <h1 className="text-xl font-semibold">Title: {userlist.name}</h1>
+                                <h1 className="text-xl font-semibold">Title: {userlist.title}</h1>
                                 <p className="text-gray-500">Description: {userlist.overview}</p>
                             </div>
                         </div>
                     </Link>
                     
                     <div className="flex items-center gap-4">
-                        <button className="p-2 rounded-2xl bg-green-500 text-white font-semibold cursor-pointer">Update</button>
+                        <Link href={`/studios/edit/${userlist._id}`} className="p-2 rounded-2xl bg-green-500 text-white font-semibold cursor-pointer">Update</Link>
                         <button className="p-2 rounded-2xl bg-red-500 text-white font-semibold cursor-pointer" popoverTarget="my-modal-1">Delete</button>
 
                         <div className="modal" id="my-modal-1" popover="auto">

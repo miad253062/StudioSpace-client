@@ -60,7 +60,7 @@ function Navbar () {
                                             <li className="text-xs text-gray-500">{data?.user.email}</li>
                                             <li><Link href={'#'}>Deshboard</Link></li>
                                             <li><Link href={'/add-studio'}>Add New Studio</Link></li>
-                                            <li><Link href={'/my-listing'}>My Studio Listings</Link></li>
+                                            <li><Link href={'/my-listings'}>My Studio Listings</Link></li>
                                             <li><Link href={'/my-bookings'}>My Bookings</Link></li>
                                             <li><button onClick={handleSignOut} className="text-red-600"><VscSignOut />Logout</button></li>
                                         </ul>
