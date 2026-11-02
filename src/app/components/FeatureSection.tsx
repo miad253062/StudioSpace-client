@@ -2,7 +2,7 @@ import { StudioType } from "../types/types";
 import StudioCard from "./StudioCard";
 
 async function FeaturedSection () {
-    const res = await fetch(`${process.env.SERVER_ADDRESS}/feature`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/feature`)
     const data:StudioType[] = await res.json()
     console.log(data)
     return (

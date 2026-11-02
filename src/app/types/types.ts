@@ -1,13 +1,15 @@
 export interface StudioType {
-    _id: string;
-  title: string;
-  category: string;
-  description: string;
-  space: string;
-  capacity: string;
-  openHour: string;
-  hourlyRate: number;
-  rating: number;
-  location: string;
-  image: string;
-  }
+   _id: string;
+    name: string;
+    email: string;
+    title: string;
+    category: string;
+    rate: string;
+    rating: string;
+    deposit: string;
+    capacity: string;
+    location: string;
+    imageURL: string;
+    overview: string;
+    amenities: string[];
+}

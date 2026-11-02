@@ -8,9 +8,9 @@ interface StudiosProps {
 async function Studios ({searchParams}: StudiosProps) {
     const params = await searchParams;
     const categoryName = params.category;
-    let url = `${process.env.SERVER_ADDRESS}/studios`
+    let url = `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/studios`
     if(categoryName){
-        url = `${process.env.SERVER_ADDRESS}/studios?category=${categoryName}`
+        url = `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/studios?category=${categoryName}`
     }
     const res = await fetch(url, {cache: 'no-store'})
     const data: StudioType[] = await res.json()
