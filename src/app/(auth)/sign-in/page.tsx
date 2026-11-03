@@ -7,7 +7,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 
-function SignUp() {
+function SignIn() {
   const [eye, setEye] = useState(false);
   const handleEye = () => {
     setEye(!eye);
@@ -64,7 +64,7 @@ function SignUp() {
                 onClick={handleEye}
               >
                 {eye ? (
-                  <AiFillEye className="text-xl " />
+                  <AiFillEye className="text-xl" />
                 ) : (
                   <AiFillEyeInvisible className="text-xl " />
                 )}
@@ -82,12 +82,12 @@ function SignUp() {
                 <p>Or</p>
                 <hr className="text-gray-300 flex-1" />
               </div>
-              <button onClick={handleGoogle} className="flex justify-center items-center gap-2 border w-full p-2 border-gray-200 rounded-2xl active:scale-98">
+              <button onClick={handleGoogle} type="button" className="flex justify-center items-center gap-2 border w-full p-2 border-gray-200 rounded-2xl active:scale-98">
                 <FcGoogle className="text-2xl" /> Continue With Google
               </button>
             </div>
             <p className="text-gray-500">
-              Don't have an account?{" "}
+              Don't have an account?
               <Link className="hover:underline hover:text-black" href={"/sign-up"}>
                 Sign Up
               </Link>
@@ -99,4 +99,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignIn;

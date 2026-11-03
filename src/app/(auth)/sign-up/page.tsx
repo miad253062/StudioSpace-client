@@ -76,7 +76,7 @@ function SignUp () {
                             <p>Or</p>
                             <hr className="text-gray-300 flex-1"/>
                            </div>
-                            <button onClick={handleGoogle} className="flex justify-center items-center gap-2 border w-full p-2 border-gray-200 rounded-2xl active:scale-98"><FcGoogle className="text-2xl"/> Continue With Google</button>
+                            <button onClick={handleGoogle} type="button" className="flex justify-center items-center gap-2 border w-full p-2 border-gray-200 rounded-2xl active:scale-98"><FcGoogle className="text-2xl"/> Continue With Google</button>
                         </div>
                         <p className="text-gray-500">Have an account? <Link className="hover:underline" href={'/sign-in'}>Sign In</Link></p>
                     </form>
