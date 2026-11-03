@@ -3,6 +3,7 @@ import { BookingType } from "../types/types";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { authClient } from "../lib/auth-client";
 
 
 
@@ -38,8 +39,13 @@ function MyBooking ({userlist}: UserListDataProps) {
 
     const handleDelete = async(bookingid: string) => {
         try {
+            const { data: tokenData, error: tokenError } = await authClient.token();
+            const jwtToken = tokenData?.token;
             const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/bookings/${bookingid}`, {
                 method: "DELETE",
+                headers: {
+                'Authorization': `Bearer ${jwtToken}`,
+            },
                 
             });
             
