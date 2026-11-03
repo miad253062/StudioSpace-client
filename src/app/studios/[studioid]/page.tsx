@@ -1,6 +1,7 @@
 import BookingModal from "@/app/components/BookingModal";
 import { StudioType } from "@/app/types/types";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaLocationDot, FaStar } from "react-icons/fa6";
 
@@ -12,6 +13,7 @@ async function StudioDetailsPage({ params }: { params: Promise<{ studioid: strin
 
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/studios/${studioid}`)
+    if(!res.ok) return notFound()
     const studio: StudioType = await res.json()
 
     
