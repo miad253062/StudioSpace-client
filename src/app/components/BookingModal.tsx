@@ -4,6 +4,7 @@ import { FormEvent, useRef } from "react";
 import { toast } from "react-toastify";
 import { StudioType } from "../types/types";
 import { useSession } from "../lib/auth-client";
+import { useRouter } from "next/navigation";
 
 interface BookingModalProps {
     studio: StudioType;
@@ -16,6 +17,7 @@ export default function BookingModal({ studio, title, rate, status }: BookingMod
     const modalRef = useRef<HTMLDialogElement>(null);
     const session = useSession()
     const {data} = session
+    const router = useRouter()
 
     const handleBooking = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -33,7 +35,8 @@ export default function BookingModal({ studio, title, rate, status }: BookingMod
 
         try {
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/bookings`, {
+            if(data?.user){
+                const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/bookings`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -47,6 +50,12 @@ export default function BookingModal({ studio, title, rate, status }: BookingMod
             } else {
                 toast.error("Failed to confirm booking.");
             }
+            }else{
+                toast.error('You must login before booking!')
+                router.push('/sign-in')
+            }
+
+            
         } catch (error) {
             console.error("Booking Error:", error);
             toast.error("An error occurred while booking.");
