@@ -13,3 +13,14 @@ export interface StudioType {
     overview: string;
     amenities: string[];
 }
+
+export type BookingType = {
+    _id: string;
+    user: string;
+    email: string;
+    studio: StudioType;
+    date: string;
+    duration: string;
+    totalCost: number;
+    status: string
+};

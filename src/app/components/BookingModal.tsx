@@ -9,9 +9,10 @@ interface BookingModalProps {
     studio: StudioType;
     title: string;
     rate: string;
+    status: string
 }
 
-export default function BookingModal({ studio, title, rate }: BookingModalProps) {
+export default function BookingModal({ studio, title, rate, status }: BookingModalProps) {
     const modalRef = useRef<HTMLDialogElement>(null);
     const session = useSession()
     const {data} = session
@@ -21,6 +22,7 @@ export default function BookingModal({ studio, title, rate }: BookingModalProps)
         
         const formData = new FormData(e.currentTarget);
         const bookingData = {
+            status: status,
             user: data?.user.name,
             email: data?.user.email,
             studio,

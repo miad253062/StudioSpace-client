@@ -90,6 +90,7 @@ async function StudioDetailsPage({ params }: { params: Promise<{ studioid: strin
                             studio={studio} 
                             title={studio.title} 
                             rate={studio.rate} 
+                            status= {'pending'}
                         />
                     </div>
 
