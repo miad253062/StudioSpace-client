@@ -80,10 +80,10 @@ function MyBooking ({userlist}: UserListDataProps) {
                 <div className="flex flex-col items-center gap-2">
                     {
                         userlist.status ==='pending' && <div>
-                            <button onClick={() => {handleBooking(userlist._id)}} className="border p-1 rounded-xl border-red-600 text-red-600 font-semibold active:scale-95">Cancel Booking</button>
+                            <button onClick={() => {handleBooking(userlist._id)}} className="border p-1 rounded-xl border-gray-300 font-semibold active:scale-95 cursor-pointer">Cancel Booking</button>
                         </div>
                     }
-                    <button onClick={() => {handleDelete(userlist._id)}} className="border p-1 rounded-xl border-red-600 text-red-600 font-semibold active:scale-95">Delete Booking</button>
+                    <button onClick={() => {handleDelete(userlist._id)}} className="border border-gray-300 p-1 rounded-xl  hover:bg-[#262f49] hover:text-white cursor-pointer font-semibold active:scale-95">Delete Booking</button>
                 </div>
             </div>
         </div>

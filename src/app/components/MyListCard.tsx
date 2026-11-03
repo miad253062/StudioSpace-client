@@ -45,8 +45,8 @@ function MyListCard ({userlist}: UserListDataProps) {
                             <div className="modal-box">
                                 <h3 className="font-bold text-lg">Are you really want to delete!</h3>
                                 <div className="modal-action">
-                                <button onClick={() => {handleDelete(userlist._id)}} className="p-2 rounded-2xl hover:bg-red-500 hover:text-white font-semibold cursor-pointer" popoverTarget="my-modal-1" popoverTargetAction="hide">Yes</button>
-                                <button className="p-2 rounded-2xl hover:bg-green-500 hover:text-white font-semibold cursor-pointer" popoverTarget="my-modal-1" popoverTargetAction="hide">No</button>
+                                <button onClick={() => {handleDelete(userlist._id)}} className="p-2 rounded-2xl font-semibold cursor-pointer" popoverTarget="my-modal-1" popoverTargetAction="hide">Yes</button>
+                                <button className="p-2 rounded-2xl  font-semibold cursor-pointer" popoverTarget="my-modal-1" popoverTargetAction="hide">No</button>
                                 </div>
                             </div>
                         </div>

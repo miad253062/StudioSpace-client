@@ -2,7 +2,7 @@
 
 import { FormEvent } from 'react';
 import { StudioType } from '../types/types';
-import { useSession } from '../lib/auth-client';
+import { authClient, useSession } from '../lib/auth-client';
 import { toast } from 'react-toastify';
 import { redirect } from 'next/navigation';
 
@@ -18,10 +18,14 @@ function AddStudio () {
         const userData = Object.fromEntries(formdata) as unknown as StudioType
         userData.amenities = formdata.getAll('amenities') as string[]
 
+        const { data: tokenData, error: tokenError } = await authClient.token();
+        const jwtToken = tokenData?.token;
+        console.log(jwtToken);
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/add-studio`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwtToken}`,
             },
             body: JSON.stringify(userData)
         })
