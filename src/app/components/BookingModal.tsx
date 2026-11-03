@@ -3,7 +3,7 @@
 import { FormEvent, useRef } from "react";
 import { toast } from "react-toastify";
 import { StudioType } from "../types/types";
-import { useSession } from "../lib/auth-client";
+import { authClient, useSession } from "../lib/auth-client";
 import { useRouter } from "next/navigation";
 
 interface BookingModalProps {
@@ -13,7 +13,7 @@ interface BookingModalProps {
     status: string
 }
 
-export default function BookingModal({ studio, title, rate, status }: BookingModalProps) {
+function BookingModal({ studio, title, rate, status }: BookingModalProps) {
     const modalRef = useRef<HTMLDialogElement>(null);
     const session = useSession()
     const {data} = session
@@ -35,10 +35,13 @@ export default function BookingModal({ studio, title, rate, status }: BookingMod
 
         try {
     if (data?.user) {
+        const { data: tokenData, error: tokenError } = await authClient.token();
+        const jwtToken = tokenData?.token;
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/bookings`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwtToken}`,
             },
             body: JSON.stringify(bookingData),
         });
@@ -108,3 +111,6 @@ export default function BookingModal({ studio, title, rate, status }: BookingMod
         </>
     );
 }
+
+
+export default  BookingModal
