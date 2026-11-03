@@ -6,7 +6,7 @@ async function FeaturedSection () {
     const data:StudioType[] = await res.json()
     console.log(data)
     return (
-        <div className="bg-[#f5f5f5] p-4 my-10">
+        <div className="p-4 my-10">
             <div className="p-10 space-y-4 text-center">
                 <p className="text-xl">Studio Spaces</p>
                 <h1 className="text-2xl font-semibold md:text-4xl">Discover Spaces That Inspire Creativity</h1>

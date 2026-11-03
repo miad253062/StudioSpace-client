@@ -11,6 +11,7 @@ interface UserListDataProps {
 }
 
 function MyBooking ({userlist}: UserListDataProps) {
+    const router = useRouter()
     const handleBooking = async(bookingid: string) => {
         const updateData = { status: 'canceled' };
         try {
@@ -26,7 +27,7 @@ function MyBooking ({userlist}: UserListDataProps) {
             
             if (responseData.acknowledged || responseData.modifiedCount > 0) {
                 toast.success('Booking Canceled');
-                window.location.reload()
+                router.refresh()
             } else {
                 toast.error('Something went wrong or no changes were made!');
             }
@@ -46,7 +47,7 @@ function MyBooking ({userlist}: UserListDataProps) {
             
             if (responseData.acknowledged || responseData.deletedCount > 0) {
                 toast.success('Booking Deleted');
-                window.location.reload()
+                router.refresh()
 
             } else {
                 toast.error('Something went wrong or no changes were made!');
@@ -73,7 +74,7 @@ function MyBooking ({userlist}: UserListDataProps) {
 
                 <div className="text-gray-500 text-xs space-y-1">
                     <p>{userlist.duration} Hour</p>
-                    <p>Total Cost: {userlist.totalCost}$</p>
+                    <p>Total Cost: ${userlist.totalCost}</p>
                     <p>Date: {userlist.date}</p>
                 </div>
                 <div className="flex flex-col items-center gap-2">

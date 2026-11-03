@@ -34,32 +34,31 @@ export default function BookingModal({ studio, title, rate, status }: BookingMod
         };
 
         try {
+    if (data?.user) {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/bookings`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(bookingData),
+        });
 
-            if(data?.user){
-                const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/bookings`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(bookingData),
-            });
+        const responseData = await res.json(); 
 
-            if (res.ok) {
-                toast.success("Booking confirmed successfully!");
-                modalRef.current?.close(); 
-            } else {
-                toast.error("Failed to confirm booking.");
-            }
-            }else{
-                toast.error('You must login before booking!')
-                router.push('/sign-in')
-            }
-
-            
-        } catch (error) {
-            console.error("Booking Error:", error);
-            toast.error("An error occurred while booking.");
+        if (res.ok) {
+            toast.success("Booking confirmed successfully!");
+            modalRef.current?.close(); 
+        } else {
+            toast.error(responseData.message || "Failed to confirm booking.");
         }
+    } else {
+        toast.error('You must login before booking!')
+        router.push('/sign-in')
+    }
+} catch (error) {
+    console.error("Booking Error:", error);
+    toast.error("An error occurred while booking.");
+}
     };
 
     return (
@@ -67,7 +66,7 @@ export default function BookingModal({ studio, title, rate, status }: BookingMod
 
             <button 
                 onClick={() => modalRef.current?.showModal()}
-                className="w-full bg-[#262f40] text-white p-4 rounded-2xl text-xl font-semibold hover:bg-gray-800 active:scale-95 transition-transform"
+                className="w-full bg-[#262f40] text-white p-2 rounded-2xl text-xl font-semibold hover:bg-gray-800 active:scale-95 transition-transform"
             >
                 Book Workspace Now
             </button>
