@@ -26,7 +26,7 @@ function StudioCard ({studio}: StudioProp) {
                             <h1 className="text-2xl md:text-4xl font-bold">${studio.rate}</h1>
                             <sub className="text-gray-500">/ Hours</sub>
                         </div>
-                        <Link href={`/details/${studio._id}`} className="border rounded-xl bg-[#262f40] p-2 text-white">View Details</Link>
+                        <Link href={`/studios/${studio._id}`} className="border rounded-xl bg-[#262f40] p-2 text-white">View Details</Link>
                     </div>
                 </div>
             </div>

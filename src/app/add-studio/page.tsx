@@ -29,7 +29,7 @@ function AddStudio () {
         const data = await res.json()
         if(data.acknowledged){
             toast.success('Studio added successfully')
-            redirect('/my-listing')
+            redirect('/my-listings')
         }else{
             toast.error('Someting went wrong!')
         }
