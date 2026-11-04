@@ -18,7 +18,7 @@ StudioSpace is a high-performance peer-to-peer marketplace designed for creators
 
 ## Tech Stack
 
-- **Frontend:** Next.js (App Router), TypeScript, Tailwind CSS, DaisyUI, Swiper.js, React Hot Toast / Sonner
+- **Frontend:** Next.js (App Router), TypeScript, Tailwind CSS, DaisyUI, Swiper.js, React Hot Toast
 - **Authentication:** BetterAuth, Google OAuth, MongoDB Adapter
 - **Backend:** Express.js, Node.js, MongoDB
 - **Hosting:** Vercel (Client & Server)
