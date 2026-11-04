@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "../lib/auth-client";
 import { VscSignOut } from "react-icons/vsc";
-import { MdArrowDropDown } from "react-icons/md";
 
 function Navbar() {
   const session = useSession();
@@ -37,7 +36,7 @@ function Navbar() {
           </Link>
 
           <div className="hidden md:inline">
-            <ul className="flex items-center gap-4 text-[#262f49]">
+            <ul className="flex items-center gap-4">
               <li>
                 <Link
                   href={"/"}

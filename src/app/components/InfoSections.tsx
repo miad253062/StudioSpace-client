@@ -4,7 +4,6 @@ import { MdVerifiedUser, MdSupportAgent, MdSecurity, MdShield } from 'react-icon
 export default function InfoSections() {
   return (
     <div className="py-16 bg-white">
-      {/* How Booking Works */}
       <section className="container mx-auto mb-20 px-4">
         <h2 className="text-3xl font-bold text-center mb-12">How Booking Works</h2>
         <div className="grid md:grid-cols-4 gap-8">
@@ -25,7 +24,6 @@ export default function InfoSections() {
         </div>
       </section>
 
-      {/* Host Guarantee */}
       <section className="container mx-auto px-4 bg-gray-50 py-12 rounded-2xl">
         <h2 className="text-3xl font-bold text-center mb-12">Host Guarantee & Creator Support</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

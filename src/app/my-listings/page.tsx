@@ -31,6 +31,9 @@ function MyListing () {
         }
     }, [sessionData]); 
 
+    const handleRemoveItem = (id: string) => {
+        setListings((prevListings) => prevListings.filter(item => item._id !== id));
+    }
 
     if (loading) {
         return (
@@ -52,7 +55,13 @@ function MyListing () {
                             <h1 className="text-center text-2xl font-semibold text-[#262f40]">No Data Found!</h1>
                         </div>
                     ) : (
-                        listings.map(card => <MyListCard key={card._id} userlist={card}></MyListCard>)
+                        listings.map(card => (
+                            <MyListCard 
+                                key={card._id} 
+                                userlist={card}
+                                onDelete={handleRemoveItem}
+                            />
+                        ))
                     )
                 }
             </div>
