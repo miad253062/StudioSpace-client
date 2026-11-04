@@ -38,7 +38,7 @@ function MyListCard ({userlist, onDelete}: UserListDataProps) {
                         <Image src={userlist.imageURL} alt={userlist.name} width={50} height={50}/>
                         <div>
                             <h1 className="text-xl font-semibold">Title: {userlist.title}</h1>
-                            <p className="text-gray-500">Description: {userlist.overview}</p>
+                            <p className="text-gray-500 max-w-150">Description: {userlist.overview}</p>
                         </div>
                     </div>
                 </Link>
