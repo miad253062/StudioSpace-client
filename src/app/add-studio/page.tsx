@@ -1,7 +1,7 @@
 'use client'
 
 import { FormEvent } from 'react';
-import { StudioType } from '../types/types';
+import { FormDataType, StudioType } from '../types/types';
 import { authClient, useSession } from '../lib/auth-client';
 import { toast } from 'react-toastify';
 import { redirect } from 'next/navigation';
@@ -12,22 +12,27 @@ import { redirect } from 'next/navigation';
 function AddStudio () {
     const session = useSession()
     const {data} = session
+    const name = data?.user.name;
+    const email = data?.user.email;
+
     const handleAddStudio = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formdata = new FormData(e.currentTarget)
-        const userData = Object.fromEntries(formdata) as unknown as StudioType
+        const userData = Object.fromEntries(formdata) as unknown as FormDataType
+        console.log(userData)
         userData.amenities = formdata.getAll('amenities') as string[]
+        const packedData = {name, email, ...userData}
 
         const { data: tokenData, error: tokenError } = await authClient.token();
         const jwtToken = tokenData?.token;
-        console.log(jwtToken);
+
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/add-studio`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${jwtToken}`,
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(packedData)
         })
         
         const data = await res.json()
@@ -44,9 +49,9 @@ function AddStudio () {
             <div className="border border-gray-200 p-4 rounded-2xl m-4 max-w-fit mx-auto">
                 <form onSubmit={handleAddStudio} className="flex flex-col max-w-fit space-y-2">
                     <label>Name</label>
-                    <input className="p-2 border border-gray-300 rounded-2xl" type="text" name="name" defaultValue={data?.user.name} readOnly/>
+                    <input className="p-2 border border-gray-300 rounded-2xl disabled:bg-gray-200 cursor-not-allowed" type="text" name="name" defaultValue={data?.user.name} disabled readOnly/>
                     <label>Email</label>
-                    <input className="p-2 border border-gray-300 rounded-2xl" type="email" name="email" defaultValue={data?.user.email} readOnly required/>
+                    <input className="p-2 border border-gray-300 rounded-2xl disabled:bg-gray-200 cursor-not-allowed" type="email" name="email" defaultValue={data?.user.email} disabled readOnly required/>
                     <label>Title</label>
                     <input className="p-2 border border-gray-300 rounded-2xl" type="text" name="title" required/>
                     <label>Category</label>

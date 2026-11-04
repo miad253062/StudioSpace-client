@@ -3,14 +3,14 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
-import { StudioType } from '@/app/types/types';
+import { FormDataType, StudioType } from '@/app/types/types';
 import { use } from 'react';
 
 interface EditProps {
     params: Promise<{ editid: string }>;
 }
 
-export default function EditStudio({ params }: EditProps) {
+function EditStudio({ params }: EditProps) {
     const { editid } = use(params);
     const router = useRouter();
 
@@ -38,7 +38,7 @@ export default function EditStudio({ params }: EditProps) {
     const handleEditStudio = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formdata = new FormData(e.currentTarget);
-        const userData = Object.fromEntries(formdata) as unknown as StudioType;
+        const userData = Object.fromEntries(formdata) as unknown as FormDataType;
         userData.amenities = formdata.getAll('amenities') as string[];
 
         try {
@@ -69,10 +69,10 @@ export default function EditStudio({ params }: EditProps) {
             <div className="border border-gray-200 p-4 rounded-2xl m-4 max-w-fit mx-auto">
                 <form onSubmit={handleEditStudio} className="flex flex-col max-w-fit space-y-2">
                     <label>Name</label>
-                    <input className="p-2 border border-gray-300 rounded-2xl" type="text" name="name" defaultValue={data.name} readOnly/>
+                    <input className="p-2 border border-gray-300 rounded-2xl disabled:bg-gray-200 cursor-not-allowed" type="text" name="name" defaultValue={data.name} disabled readOnly/>
                     
                     <label>Email</label>
-                    <input className="p-2 border border-gray-300 rounded-2xl" type="email" name="email" defaultValue={data.email} readOnly required/>
+                    <input className="p-2 border border-gray-300 rounded-2xl disabled:bg-gray-200 cursor-not-allowed" type="email" name="email" defaultValue={data.email} disabled readOnly required/>
                     
                     <label>Title</label>
                     <input className="p-2 border border-gray-300 rounded-2xl" type="text" name="title" defaultValue={data.title} required/>
@@ -136,3 +136,5 @@ export default function EditStudio({ params }: EditProps) {
         </div>
     );
 }
+
+export default  EditStudio

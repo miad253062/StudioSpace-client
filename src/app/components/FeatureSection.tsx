@@ -4,7 +4,7 @@ import StudioCard from "./StudioCard";
 async function FeaturedSection () {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/feature`)
     const data:StudioType[] = await res.json()
-    console.log(data)
+
     return (
         <div className="p-4 my-10">
             <div className="p-10 space-y-4 text-center">

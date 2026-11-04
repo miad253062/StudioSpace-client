@@ -1,8 +1,11 @@
+'use client'
 import Image from "next/image";
 import { StudioType } from "../types/types";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { authClient } from "../lib/auth-client";
+
 
 
 interface UserListDataProps {
@@ -11,9 +14,16 @@ interface UserListDataProps {
 
 function MyListCard ({userlist}: UserListDataProps) {
     const router = useRouter()
+    
     const handleDelete = async(id: string) => {
+        const { data: tokenData, error: tokenError } = await authClient.token();
+        const jwtToken = tokenData?.token;
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/delete/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwtToken}`,
+            },
         })
 
         const data = await res.json()
@@ -52,7 +62,6 @@ function MyListCard ({userlist}: UserListDataProps) {
                         </div>
                     </div>
                 </div>
-
         </div>
     )
 }
