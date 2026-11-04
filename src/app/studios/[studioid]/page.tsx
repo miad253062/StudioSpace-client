@@ -74,7 +74,7 @@ async function StudioDetailsPage({ params }: { params: Promise<{ studioid: strin
 
 
                 <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-3xl shadow-xl border border-gray-100 sticky top-10">
+                    <div className="bg-white p-6 rounded-3xl shadow-xl border border-gray-100">
                         <h3 className="text-3xl font-bold mb-4">${studio.rate} <span className="text-lg text-gray-500 font-normal">/ hour</span></h3>
                         
                         <div className="space-y-3 mb-6">

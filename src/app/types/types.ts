@@ -22,7 +22,7 @@ export interface BookingType {
   date: string;
   duration: string;
   totalCost: number;
-  status: string;
+  status: 'pending' | 'confirmed' | 'canceled' | 'completed'
 }
 
 export interface FormDataType {
