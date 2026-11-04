@@ -86,12 +86,13 @@ function SignIn() {
                 <FcGoogle className="text-2xl" /> Continue With Google
               </button>
             </div>
-            <p className="text-gray-500">
-              Don't have an account?
-              <Link className="hover:underline hover:text-black" href={"/sign-up"}>
-                Sign Up
-              </Link>
-            </p>
+            <div className="flex items-center justify-between mt-5">
+              <p className="text-gray-500">
+                Don't have an account? <Link className="hover:underline hover:text-black" href={"/sign-up"}>Sign Up</Link>
+              </p>
+              <Link href={'#'} className="text-gray-500 hover:underline hover:text-black">Forget Password?</Link>
+            </div>
+            
           </form>
         </div>
       </div>

@@ -30,6 +30,10 @@ function MyBookings () {
         }
     }, [sessionData]); 
 
+    const handleRemoveItem = (id: string) => {
+        setbookings((prevBookings) => prevBookings.filter(booking => booking._id !== id));
+    }
+
     if (loading) {
         return (
             <div className="flex justify-center items-center h-64">
@@ -50,7 +54,13 @@ function MyBookings () {
                             <h1 className="text-center text-2xl font-semibold text-[#262f40]">No Data Found!</h1>
                         </div>
                     ) : (
-                        bookings.map(card => <MyBooking key={card._id} userlist={card}></MyBooking>)
+                        bookings.map(card => (
+                            <MyBooking 
+                                key={card._id} 
+                                userlist={card} 
+                                onDelete={handleRemoveItem}
+                            />
+                        ))
                     )
                 }
                 <Link href={'/studios'} className="text-center border bg-[#262f49] rounded-xl p-2 text-white font-semibold active:scale-97">Book a Studios</Link>

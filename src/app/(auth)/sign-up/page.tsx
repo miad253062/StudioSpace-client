@@ -68,7 +68,7 @@ function SignUp () {
                                 }
                             </div>
                         </div>
-                        {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
+                        {passwordError && <p className="text-red-500 text-sm max-w-100 text-center">{passwordError}</p>}
                         <button type="submit" className="bg-[#262f40] active:scale-97 my-2 rounded-2xl p-2 text-white font-semibold">Sign Up</button>
                         <div>
                            <div className="flex items-center gap-2">

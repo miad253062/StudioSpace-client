@@ -17,7 +17,7 @@ function Navbar() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <div className="border-b border-gray-200 p-2">
+    <div className="sticky top-0 z-50 bg-white border-b border-gray-200 p-2">
       <nav className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link href={"/"}>
@@ -43,7 +43,7 @@ function Navbar() {
                   href={"/"}
                   className={
                     isActive("/")
-                      ? "font-bold text-black border-b-2 border-[#262f49]"
+                      ? "font-bold border-b-2 border-blue-700"
                       : ""
                   }
                 >
@@ -55,7 +55,7 @@ function Navbar() {
                   href={"/studios"}
                   className={
                     isActive("/studios")
-                      ? "font-bold text-black border-b-2 border-[#262f49]"
+                      ? "font-bold border-b-2 border-blue-700"
                       : ""
                   }
                 >
@@ -67,7 +67,7 @@ function Navbar() {
                   href={"/#"}
                   className={
                     isActive("/how-it-works")
-                      ? "font-bold text-black border-b-2 border-[#262f49]"
+                      ? "font-bold border-b-2 border-blue-700"
                       : ""
                   }
                 >
@@ -79,7 +79,7 @@ function Navbar() {
                   href={"/#"}
                   className={
                     isActive("/about-us")
-                      ? "font-bold text-black border-b-2 border-[#262f49]"
+                      ? "font-bold border-b-2 border-blue-700"
                       : ""
                   }
                 >
@@ -93,7 +93,6 @@ function Navbar() {
               <span className="loading loading-spinner text-neutral"></span>
             ) : (data?.user.name as string) ? (
               <div className="dropdown dropdown-end dropdown-bottom">
-                {/* প্রোফাইল সার্কেল যা ড্রপডাউন ট্রিগার হিসেবে কাজ করবে */}
                 <div
                   tabIndex={0}
                   role="button"
