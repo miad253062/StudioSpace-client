@@ -45,7 +45,6 @@ function BookingModal({ studio, title, rate, status }: BookingModalProps) {
             },
             body: JSON.stringify(bookingData),
         });
-
         const responseData = await res.json(); 
 
         if (res.ok) {
