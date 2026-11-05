@@ -49,7 +49,7 @@ function SignUp () {
     }
   }
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto p-4">
             <div className="flex items-center justify-center h-200">
                 <div className="border p-4 border-gray-200 rounded-2xl">
                     <form onSubmit={handleForm} className="flex flex-col min-w-100 space-y-2">

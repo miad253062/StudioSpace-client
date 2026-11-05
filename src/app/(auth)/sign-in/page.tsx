@@ -39,7 +39,7 @@ function SignIn() {
     }
   }
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto p-4">
       <div className="flex items-center justify-center h-200">
         <div className="border p-4 border-gray-200 rounded-2xl">
           <form
