@@ -57,7 +57,7 @@ function SignUp () {
                         <input className="border border-gray-200 p-2 rounded-2xl" type="text" name="name"/>
                         <label>Email</label>
                         <input className="border border-gray-200 p-2 rounded-2xl" type="email" name="email"/>
-                        <label>Photo URL</label>
+                        <label>Photo URL (Optional)</label>
                         <input className="border border-gray-200 p-2 rounded-2xl" type="text" name="image"/>
                         <label>Password</label>
                         <div className="relative">
